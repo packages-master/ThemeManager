@@ -1,6 +1,5 @@
 package com.packagesmaster.thememanager
 
-import androidx.annotation.RestrictTo
 import com.packagesmaster.sharedutils.SharedUtils
 
 
@@ -10,12 +9,11 @@ class ThemeManager {
         private lateinit var instance: ThemeManager
 
         fun getThemeManager(): ThemeManager {
+            if (!::instance.isInitialized) {
+                instance = ThemeManager()
+            }
             return instance
         }
-    }
-
-    init {
-        instance = this
     }
 
     fun getCurrentAppTheme(): Int {
